@@ -14,7 +14,7 @@ const YoutubeSearch = () => {
       params: {
         part: "snippet",
         maxResults: "20",
-        key: "AIzaSyAe2PDAJ9EjbFtXfFPMsml1CQpN49MGFaw",
+        key: "AIzaSyCHZdBMp5nG3zrsSLKKFrC1-KH35bqqnKM",
         type: "video",
         q: query,
       },
