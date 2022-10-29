@@ -6,9 +6,22 @@ import { useState } from "react";
 const App = () => {
   const [name, setName] = useState("nghia");
   const [address, setAddress] = useState("");
+  const [todos, setTodos] = useState([
+    { id: "todo1", title: "watching TV" },
+    { id: "todo2", title: "doing homework" },
+    { id: "todo3", title: "playing game" },
+  ]);
 
   const handleEventClick = (event) => {
-    setName(address);
+    if (!address) {
+      alert("Empty input");
+      return;
+    }
+    // hook not merge state
+    // ...spread syntax array js
+    let newTodo = { id: "abc", title: address };
+    setTodos([...todos, newTodo]);
+    setAddress("");
   };
 
   const handleOnchangeInput = (event) => {
@@ -22,6 +35,17 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <h1>Hello World with ReactJs and {name}</h1>
+
+      <div className="todos-container">
+        {todos.map((todo) => {
+          return (
+            <li className="todos-child" key={todo.id}>
+              {todo.title}
+            </li>
+          );
+        })}
+      </div>
+
       <input
         type="text"
         value={address}
