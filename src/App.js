@@ -8,9 +8,10 @@ const App = () => {
   const [name, setName] = useState("nghia");
   const [address, setAddress] = useState("");
   const [todos, setTodos] = useState([
-    { id: "todo1", title: "watching TV" },
-    { id: "todo2", title: "doing homework" },
-    { id: "todo3", title: "playing game" },
+    { id: "todo1", title: "watching TV", type: "DN" },
+    { id: "todo2", title: "doing homework", type: "Basil" },
+    { id: "todo3", title: "playing game", type: "DN" },
+    { id: "todo4", title: "reading book", type: "Basil" },
   ]);
 
   const handleEventClick = (event) => {
@@ -20,7 +21,7 @@ const App = () => {
     }
     // hook not merge state
     // ...spread syntax array js
-    let newTodo = { id: "abc", title: address };
+    let newTodo = { id: "abc", title: address, type: "DN" };
     setTodos([...todos, newTodo]);
     setAddress("");
   };
@@ -31,12 +32,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav />
       <header className="App-header">
+        <Nav />
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <h1>Hello World with ReactJs and {name}</h1>
-      <Todo myData={todos} title={"ALl todo"} />
+
+      <Todo todos={todos} title={"All todo"} />
+
+      <Todo
+        todos={todos.filter((item) => item.type === "DN")}
+        title={`DN's todo`}
+      />
+
       <input
         type="text"
         value={address}
