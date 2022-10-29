@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
+import Covid from "./views/Covid";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -57,14 +58,14 @@ const App = () => {
       </header>
       <h1>Hello World with ReactJs and {name}</h1>
 
-      <Todo todos={todos} title={"All todo"} deleteDataTodo={deleteDataTodo} />
+      <Covid />
 
+      {/* <Todo todos={todos} title={"All todo"} deleteDataTodo={deleteDataTodo} />
       <Todo
         todos={todos.filter((item) => item.type === "DN")}
         title={`DN's todo`}
         deleteDataTodo={deleteDataTodo}
       />
-
       <input
         type="text"
         value={address}
@@ -72,7 +73,7 @@ const App = () => {
       />
       <button type="button" onClick={(event) => handleEventClick(event)}>
         Click me
-      </button>
+      </button> */}
     </div>
   );
 };
