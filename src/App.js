@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 
 const App = () => {
@@ -13,6 +13,10 @@ const App = () => {
     { id: "todo3", title: "playing game", type: "DN" },
     { id: "todo4", title: "reading book", type: "Basil" },
   ]);
+
+  useEffect(() => {
+    console.log(">>> run useEffect");
+  });
 
   const handleEventClick = (event) => {
     if (!address) {
