@@ -21,13 +21,23 @@ const App = () => {
     }
     // hook not merge state
     // ...spread syntax array js
-    let newTodo = { id: "abc", title: address, type: "DN" };
+    let newTodo = {
+      id: Math.floor(Math.random() * 100000 + 1),
+      title: address,
+      type: "DN",
+    };
     setTodos([...todos, newTodo]);
     setAddress("");
   };
 
   const handleOnchangeInput = (event) => {
     setAddress(event.target.value);
+  };
+
+  const deleteDataTodo = (id) => {
+    let currentTodos = todos;
+    currentTodos = todos.filter((item) => item.id !== id);
+    setTodos(currentTodos);
   };
 
   return (
@@ -38,11 +48,12 @@ const App = () => {
       </header>
       <h1>Hello World with ReactJs and {name}</h1>
 
-      <Todo todos={todos} title={"All todo"} />
+      <Todo todos={todos} title={"All todo"} deleteDataTodo={deleteDataTodo} />
 
       <Todo
         todos={todos.filter((item) => item.type === "DN")}
         title={`DN's todo`}
+        deleteDataTodo={deleteDataTodo}
       />
 
       <input
