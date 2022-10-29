@@ -14,9 +14,14 @@ const App = () => {
     { id: "todo4", title: "reading book", type: "Basil" },
   ]);
 
+  // didmount
   useEffect(() => {
     console.log(">>> run useEffect");
-  });
+  }, [address]);
+
+  useEffect(() => {
+    console.log(">>> run useEffect todos");
+  }, [todos]);
 
   const handleEventClick = (event) => {
     if (!address) {
