@@ -4,19 +4,24 @@ import moment from "moment";
 
 const Covid = () => {
   const [dataCovid, setDataCovid] = useState([]);
-  // componentDidMount
-  useEffect(async () => {
-    let res = await axios.get(
-      "https://api.covid19api.com/country/vietnam?from=2020-09-01T00:00:00Z&to=2020-11-01T00:00:00Z"
-    );
-    let data = res && res.data ? res.data : [];
-    if (data && data.length > 0) {
-      data.map((item) => {
-        item.Date = moment(item.Date).format("DD/MM/YYYY");
-        return item;
-      });
-    }
-    setDataCovid(data);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(async () => {
+      let res = await axios.get(
+        "https://api.covid19api.com/country/vietnam?from=2020-09-01T00:00:00Z&to=2020-11-01T00:00:00Z"
+      );
+      let data = res && res.data ? res.data : [];
+      if (data && data.length > 0) {
+        data.map((item) => {
+          item.Date = moment(item.Date).format("DD/MM/YYYY");
+          return item;
+        });
+        data = data.reverse();
+      }
+      setDataCovid(data);
+      setLoading(false);
+    }, 3000);
   }, []);
 
   return (
@@ -33,7 +38,8 @@ const Covid = () => {
           </tr>
         </thead>
         <tbody>
-          {dataCovid &&
+          {loading === false &&
+            dataCovid &&
             dataCovid.length > 0 &&
             dataCovid.map((item) => {
               return (
@@ -46,6 +52,14 @@ const Covid = () => {
                 </tr>
               );
             })}
+
+          {loading === true && (
+            <tr>
+              <td colSpan="5" style={{ textAlign: "center" }}>
+                Loading...
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
