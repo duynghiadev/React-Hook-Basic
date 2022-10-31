@@ -53,7 +53,7 @@ const App = () => {
   };
 
   const onTimesup = () => {
-    alert("Time up");
+    // alert("Time up");
   };
 
   return (
