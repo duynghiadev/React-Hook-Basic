@@ -4,6 +4,7 @@ import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 import Covid from "./views/Covid";
+import { Countdown, NewCountdown } from "./views/Countdown";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -50,13 +51,20 @@ const App = () => {
     setTodos(currentTodos);
   };
 
+  const onTimesup = () => {
+    alert("Time up");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <Nav />
         <img src={logo} className="App-logo" alt="logo" />
+        <Countdown onTimesup={onTimesup} />
+        <span>--------------------------</span>
+        <NewCountdown onTimesup={onTimesup} />
       </header>
-      <h1>Hello World with ReactJs and {name}</h1>
+      <h1>Hello World with React and {name}</h1>
 
       <Covid />
 
