@@ -2,9 +2,10 @@ import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
-import Todo from "./views/Todo";
 import Covid from "./views/Covid";
 import { Countdown, NewCountdown } from "./views/Countdown";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Todo from "./views/Todo";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -56,33 +57,45 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-        <img src={logo} className="App-logo" alt="logo" />
-        <Countdown onTimesup={onTimesup} />
-        <span>--------------------------</span>
-        <NewCountdown onTimesup={onTimesup} />
-      </header>
-      <h1>Hello World with React and {name}</h1>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
 
-      <Covid />
-
-      {/* <Todo todos={todos} title={"All todo"} deleteDataTodo={deleteDataTodo} />
-      <Todo
-        todos={todos.filter((item) => item.type === "DN")}
-        title={`DN's todo`}
-        deleteDataTodo={deleteDataTodo}
-      />
-      <input
-        type="text"
-        value={address}
-        onChange={(event) => handleOnchangeInput(event)}
-      />
-      <button type="button" onClick={(event) => handleEventClick(event)}>
-        Click me
-      </button> */}
-    </div>
+        <Switch>
+          <Route path="/" exact>
+            <Covid />
+          </Route>
+          <Route path="/timer">
+            <Countdown onTimesup={onTimesup} />
+            <span>--------------------------</span>
+            <NewCountdown onTimesup={onTimesup} />
+          </Route>
+          <Route path="/todo">
+            <Todo
+              todos={todos}
+              title={"All todo"}
+              deleteDataTodo={deleteDataTodo}
+            />
+            <Todo
+              todos={todos.filter((item) => item.type === "DN")}
+              title={`DN's todo`}
+              deleteDataTodo={deleteDataTodo}
+            />
+            <input
+              type="text"
+              value={address}
+              onChange={(event) => handleOnchangeInput(event)}
+            />
+            <button type="button" onClick={(event) => handleEventClick(event)}>
+              Click me
+            </button>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

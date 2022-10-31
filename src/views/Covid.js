@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import moment from "moment";
 import useFetch from "../customize/fetch";
 
@@ -15,7 +14,7 @@ const Covid = () => {
   );
 
   return (
-    <>
+    <div style={{ background: "#282c34", color: "white" }}>
       <h3>Covid tracking in VietNam:</h3>
       <table>
         <thead>
@@ -61,7 +60,7 @@ const Covid = () => {
           )}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
