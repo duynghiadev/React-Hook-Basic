@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Todo from "./views/Todo";
 import Blog from "./views/Blog";
 import DetailBlog from "./views/DetailBlog";
+import AddNewBlog from "./views/AddNewBlog";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -100,6 +101,9 @@ const App = () => {
           </Route>
           <Route path="/blog/:id">
             <DetailBlog />
+          </Route>
+          <Route path="/add-new-blog">
+            <AddNewBlog />
           </Route>
         </Switch>
       </div>
