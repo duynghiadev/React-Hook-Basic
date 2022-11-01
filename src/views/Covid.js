@@ -13,7 +13,8 @@ const Covid = () => {
     isLoading,
     isError,
   } = useFetch(
-    `https://api.covid19api.com/country/vietnam?from=${priorDate}&to=${today}`
+    `https://api.covid19api.com/country/vietnam?from=${priorDate}&to=${today}`,
+    true
   );
 
   return (

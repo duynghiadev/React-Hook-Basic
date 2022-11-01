@@ -6,6 +6,8 @@ import Covid from "./views/Covid";
 import { Countdown, NewCountdown } from "./views/Countdown";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Todo from "./views/Todo";
+import Blog from "./views/Blog";
+import DetailBlog from "./views/DetailBlog";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -19,11 +21,11 @@ const App = () => {
 
   // didmount
   useEffect(() => {
-    console.log(">>> run useEffect");
+    // console.log(">>> run useEffect");
   }, [address]);
 
   useEffect(() => {
-    console.log(">>> run useEffect todos");
+    // console.log(">>> run useEffect todos");
   }, [todos]);
 
   const handleEventClick = (event) => {
@@ -92,6 +94,12 @@ const App = () => {
             <button type="button" onClick={(event) => handleEventClick(event)}>
               Click me
             </button>
+          </Route>
+          <Route path="/blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/blog/:id">
+            <DetailBlog />
           </Route>
         </Switch>
       </div>
