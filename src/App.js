@@ -9,6 +9,7 @@ import Todo from "./views/Todo";
 import Blog from "./views/Blog";
 import DetailBlog from "./views/DetailBlog";
 import AddNewBlog from "./views/AddNewBlog";
+import NotFound from "./views/NotFound";
 
 const App = () => {
   const [name, setName] = useState("nghia");
@@ -104,6 +105,9 @@ const App = () => {
           </Route>
           <Route path="/add-new-blog">
             <AddNewBlog />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
