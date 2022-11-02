@@ -6,11 +6,10 @@ const DetailBlog = () => {
   let { id } = useParams();
   let history = useHistory();
 
-  const {
-    data: dataBlogDetail,
-    isLoading,
-    isError,
-  } = useFetch(`https://jsonplaceholder.typicode.com/posts/${id}`, false);
+  const { data: dataBlogDetail, isLoading } = useFetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    false
+  );
 
   const handleBackData = () => {
     history.push("/blog");

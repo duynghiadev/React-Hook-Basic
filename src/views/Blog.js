@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useFetch from "../customize/fetch";
 import "./Blog.scss";
 import Modal from "react-bootstrap/Modal";
@@ -13,11 +13,10 @@ const Blog = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const {
-    data: dataBlogs,
-    isLoading,
-    isError,
-  } = useFetch(`https://jsonplaceholder.typicode.com/posts`, false);
+  const { data: dataBlogs, isLoading } = useFetch(
+    `https://jsonplaceholder.typicode.com/posts`,
+    false
+  );
 
   useEffect(() => {
     if (dataBlogs && dataBlogs.length > 0) {

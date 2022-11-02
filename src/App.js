@@ -4,7 +4,7 @@ import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import Covid from "./views/Covid";
 import { Countdown, NewCountdown } from "./views/Countdown";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Todo from "./views/Todo";
 import Blog from "./views/Blog";
 import DetailBlog from "./views/DetailBlog";
@@ -13,7 +13,6 @@ import NotFound from "./views/NotFound";
 import YoutubeSearch from "./views/YoutubeSearch";
 
 const App = () => {
-  const [name, setName] = useState("nghia");
   const [address, setAddress] = useState("");
   const [todos, setTodos] = useState([
     { id: "todo1", title: "watching TV", type: "DN" },
