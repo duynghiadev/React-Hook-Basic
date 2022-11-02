@@ -10,7 +10,7 @@ const NotFound = () => {
     <div className="not-found-container">
       <h4>This page isn't available</h4>
       <h5>Error Page</h5>
-      <button class="btn btn-primary" onClick={handleClickBtn}>
+      <button className="btn btn-primary" onClick={handleClickBtn}>
         Go to HomePage
       </button>
     </div>
